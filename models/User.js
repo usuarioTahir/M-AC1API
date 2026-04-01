@@ -25,7 +25,7 @@ User.authenticateKey = async (apikey) => {
   const db = mongoClient.db('products');
   const collection = db.collection('users');
   const query = { "apiKey": apikey };
-  const apiKeyExists = await collection.count(query);
+  const apiKeyExists = await collection.countDocuments(query) > 0;
   return apiKeyExists;
 }
 
